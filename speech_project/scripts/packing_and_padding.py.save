@@ -1,0 +1,3 @@
+C#### explained with colour coding https://stackoverflow.com/questions/51030782/why-do-we-pack-the-sequences-in-pytorch ######
+
+import torch

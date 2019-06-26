@@ -38,8 +38,11 @@ def text_to_seq(text):
 ######## extract spectrogram and pad it with zeros #######
 
 def load_wav(filename):
-  fs_slt,x_slt = wavfile.read(filename)
-  return x_slt
+  print("filename is", filename)
+#  fs_slt,x_slt = wavfile.read(filename, dtype=float32)
+  data = librosa.load(filename, sr=16000)
+  print("laod wav is", data[0])
+  return data[0]
 
 #def _stft_parameters():
 # return n_fft, hop_length, win_length
@@ -83,10 +86,12 @@ class CMUarctic(Dataset):
 def _pad_data(x, length):
 
     _pad = 0
+    print("whats the length", length,"len of x is what", len(x))
     return np.pad(x, (0, length - len(x)), mode='constant', constant_values=_pad)
 
 def _prepare_data(inputs):
     max_len = max((len(x) for x in inputs))
+    print("max len is", max_len)
     return np.stack([_pad_data(x, max_len) for x in inputs])
 
 
@@ -107,16 +112,18 @@ train_loader = DataLoader(dataset = datas, batch_size=4, shuffle=True)
 
 for txti, wavi in train_loader:
  
+     #print("shapes are", "txt", numpy.shape(txti.data[0]), numpy.shape(wavi))
      text = [text_to_seq(p) for p in txti]  
+     print ("wavi is", wavi)
 ####### pad sequences #######  
     
      
      text = _prepare_data(text).astype(np.int32)
-     wave = [load_wav(p) for p in wavi]
+     wave = ([np.asarray(load_wav(p), dtype=np.float32) for p in wavi])
      #print("spec is", [spectrogram(w) for w in wave])
 #     print("before", [numpy.shape(wa) for wa in wave])
 #     print("after", numpy.shape(_prepare_data(wave)))
      wave = _prepare_data(wave)
 #     print("prapre data is", wave)
      magnitude = np.array([spectrogram(w) for w in wave])
-     print("magnitude is", magnitude)
+#####     print("magnitude is", magnitude)

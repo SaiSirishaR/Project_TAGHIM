@@ -9,7 +9,7 @@ from torch.autograd import Variable
 import random
 
 
-num_mels = 8
+num_mels = 80
 num_freq = 1024
 sample_rate = 20000
 frame_length_ms = 50.

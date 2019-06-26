@@ -36,14 +36,11 @@ class arctic_database(Dataset):
 
 
 
-eng_data = arctic_database(src_dir='/home/siri/backup_on8june/Documents/Projects/Interspeech_2019/Data/baseline_40_samples/input_full', 
-                               tgt_dir='/home/siri/backup_on8june/Documents/Projects/Interspeech_2019/Data/baseline_40_samples/output_full')
+eng_data = arctic_database(src_dir='/home3/srallaba/projects/siri_expts/vocal_loudness_expts/Data/stage_1_feats/input_full', 
+                               tgt_dir='/home3/srallaba/projects/siri_expts/vocal_loudness_expts/Data/stage_1_feats/output_full')
 
 datass = DataLoader(eng_data, batch_size=4, shuffle=True)
 
-#print("eng data len", [ p for p in eng_data[0]])
 for slt, bdl in datass:
 
-#    print("i is", i)
-    #slt = data
     print("slt is", numpy.shape(slt.data), "bdl is", numpy.shape(bdl.data))

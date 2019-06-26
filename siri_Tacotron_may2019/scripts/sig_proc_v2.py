@@ -9,8 +9,8 @@ import librosa
 import numpy as np
 import os
 
-folder = '/home3/srallaba/projects/siri_expts/Tacotron/expts_20may2019/Data/orig_wav'
-new_folder = '/home3/srallaba/projects/siri_expts/Tacotron/expts_20may2019/Data/modified_wav'
+folder = '/home3/srallaba/projects/siri_expts/Tacotron/expts_20may2019/Data/toy_data/wav'
+new_folder = '/home3/srallaba/projects/siri_expts/Tacotron/expts_20may2019/Project_TAGHIM/siri_Tacotron_may2019/scripts/modified_wav'
 os.chdir(folder)
 files = sorted(os.listdir(folder))
 for file in files:

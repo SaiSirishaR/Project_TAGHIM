@@ -42,7 +42,7 @@ istft =  librosa.istft(y, hop_length=hop_length, win_length=win_length)
 
 def save_wav(wav):
   wav *= 32767 / max(0.01, np.max(np.abs(wav)))
-librosa.output.write_wav('/home3/srallaba/projects/siri_expts/Tacotron/expts_20may2019/Data/wav/modified.wav', wav.astype(np.int16), 16000)
+librosa.output.write_wav('/home3/srallaba/projects/siri_expts/Tacotron/expts_20may2019/Project_TAGHIM/siri_Tacotron_may2019/scripts/modified.wav', wav.astype(np.int16), 16000)
 
 
 print("got stft", stft,"abs is",  np.abs(stft), " amp to db is", amp_to_db(np.abs(stft)), "unnormalise_value", amp_to_db(np.abs(stft))-20, "normalized", normalize(amp_to_db(np.abs(stft))-20))

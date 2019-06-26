@@ -63,7 +63,7 @@ wav = wav[:find_endpoint(wav)]
 
 def save_wav(wav):
   wav *= 32767 / max(0.01, np.max(np.abs(wav)))
-librosa.output.write_wav('/home3/srallaba/projects/siri_expts/Tacotron/expts_20may2019/Data/wav/modified.wav', wav.astype(np.int16), 16000)
+librosa.output.write_wav('/home3/srallaba/projects/siri_expts/Tacotron/expts_20may2019/Project_TAGHIM/siri_Tacotron_may2019/scripts/modified.wav', wav.astype(np.int16), 16000)
 
 
 

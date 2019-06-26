@@ -1,4 +1,4 @@
-################################################### This code takes the text and the ccorrespomding speech, batching, data loading and shuffling #####################################
+################################################### This code takes the text and the ccorresponding speech, batching, data loading and shuffling #####################################
 
 import os
 import scipy.io.wavfile as wavfile
