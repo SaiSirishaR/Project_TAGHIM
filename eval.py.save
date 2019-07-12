@@ -1,0 +1,38 @@
+
+class val_data(Dataset):
+
+   def __init__(self, valid_dir, vall_outdir):
+
+    print("i got valid dir as", valid_dir)
+    self.valid_dir = valid_dir
+    self.files = sorted(os.listdir(self.valid_dir)) ### calling this in def __len__
+
+   def __len__(self):
+
+#    print("len is", len(self.files))  #### __len__
+    return len(self.files)
+
+   def __getitem__(self, idx):
+#     print("am in get item")
+#     print((sorted(os.listdir(self.src_dir))[idx]))
+    valid_files = (sorted(os.listdir(self.valid_dir))[idx])
+
+    valid_filename = os.path.join(self.valid_dir,valid_files)
+ ####   print("target filename is", tgt_filename)
+
+    valid_info = numpy.loadtxt(valid_filename)
+    #print("am opening the file", "index",src_info[idx], "info", src_info)#numpy.loadtxt(filename))
+ ####   print("initial shape", numpy.shape(src_info), "index is", numpy.shape(src_info[idx]))
+    return valid_info[idx]
+
+
+
+vcc_val_data = val_data(vall_dir='/home3/srallaba/projects/siri_expts/8september/Data/vcc2018_training/SF1_TF1/mgc/valid_input', vall_outdir='/home3/srallaba/projects/siri_expts/8september/Data/vcc2018_tr$
+
+
+val_datass = DataLoader(vcc_val_data, batch_size=1, shuffle=True)
+for val in val_datass:
+   val = np.array(val)
+   val_out, val_mu, val_var = vae_model(autograd.Variable(torch.Tensor(val), requires_grad=False))
+   print("val out shaope is", numpy.shape(val_out), numpy.shape(val_out.numpy()))
+
